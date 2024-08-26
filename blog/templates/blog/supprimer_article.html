@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Supprimer l'article{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mt-5">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="mb-0">Supprimer l'article</h2>
+                </div>
+                <div class="card-body">
+                    <p class="lead">Êtes-vous sûr de vouloir supprimer l'article "{{ article.titre }}" ?</p>
+                    <p class="text-muted">Cette action est irréversible.</p>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="submit" class="btn btn-danger">Confirmer la suppression</button>
+                            <a href="{% url 'detail_article' article_id=article.id %}" class="btn btn-secondary">Annuler</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
