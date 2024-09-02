@@ -26,7 +26,7 @@
                             <p class="card-text">{{ article.content|truncatewords:30 }}</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Par: {{ article.author }} le: {{ article.dete_created|date:'d-m-Y' }}</li>
+                            <li class="list-group-item">Publier le: {{ article.dete_created|date:'d-m-Y' }}</li>
                             <li class="list-group-item">Mise à jour le : {{ article.date_updated|date:'d-m-Y' }}</li>
                         </ul>
                         <div class="card-body text-center">
