@@ -1,24 +1,30 @@
 {% extends 'base.html' %}
 
-{% block title %}Supprimer l'article{% endblock %}
+{% block title %}Supprimer un Article - My Blog{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card mt-5">
-                <div class="card-header bg-danger text-white">
-                    <h2 class="mb-0">Supprimer l'article</h2>
+        <div class="col-lg-8 col-md-10">
+            <div class="card shadow-lg">
+                <div class="card-header bg-danger text-white text-center py-4">
+                    <h2 class="card-title mb-0">Supprimer l'Article</h2>
                 </div>
-                <div class="card-body">
-                    <p class="lead">Êtes-vous sûr de vouloir supprimer l'article "{{ article.titre }}" ?</p>
-                    <p class="text-muted">Cette action est irréversible.</p>
-                    
+                <div class="card-body p-5">
+                    <p class="text-center">Êtes-vous sûr de vouloir supprimer cet article ? Cette action est irréversible.</p>
                     <form method="post">
                         {% csrf_token %}
-                        <div class="d-flex justify-content-between mt-4">
-                            <button type="submit" class="btn btn-danger">Confirmer la suppression</button>
-                            <a href="{% url 'detail_article' article_id=article.id %}" class="btn btn-secondary">Annuler</a>
+                        <div class="form-group mb-4">
+                            <label for="title" class="form-label">Titre de l'Article</label>
+                            <input type="text" class="form-control form-control-lg" value="{{ article.title }}" readonly>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-danger btn-lg">
+                                <i class="fas fa-trash me-2"></i>Supprimer l'Article
+                            </button>
+                            <a href="{% url 'list_article' %}" class="btn btn-secondary btn-lg ms-2">
+                                <i class="fas fa-times me-2"></i>Annuler
+                            </a>
                         </div>
                     </form>
                 </div>

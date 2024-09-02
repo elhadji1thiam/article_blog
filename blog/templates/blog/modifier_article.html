@@ -1,48 +1,37 @@
 {% extends 'base.html' %}
 
-{% block title %}
-    {% if form.instance.pk %}
-        Modifier un article
-    {% else %}
-        Créer un article
-    {% endif %}
-{% endblock %}
+{% block title %}Modifier un Article - My Blog{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card mt-5">
-                <div class="card-header bg-primary text-white">
-                    <h2 class="mb-0">
-                        {% if form.instance.pk %}
-                            Modifier un article
-                        {% else %}
-                            Créer un article
-                        {% endif %}
-                    </h2>
+        <div class="col-lg-8 col-md-10">
+            <div class="card shadow-lg">
+                <div class="card-header bg-warning text-white text-center py-4">
+                    <h2 class="card-title mb-0">Modifier l'Article</h2>
                 </div>
-                <div class="card-body">
-                    <form method="post" enctype="multipart/form-data">
+                <div class="card-body p-5">
+                    <form method="post">
                         {% csrf_token %}
-                        {% for field in form %}
-                            <div class="mb-3">
-                                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                                {{ field }}
-                                {% if field.help_text %}
-                                    <small class="form-text text-muted">{{ field.help_text }}</small>
-                                {% endif %}
-                                {% if field.errors %}
-                                    {% for error in field.errors %}
-                                        <div class="invalid-feedback d-block">{{ error }}</div>
-                                    {% endfor %}
-                                {% endif %}
-                            </div>
-                        {% endfor %}
-                        <div class="d-flex justify-content-between mt-4">
-                            <button type="submit" class="btn btn-primary">Enregistrer</button>
-                            <a href="{% url 'list_article' %}" class="btn btn-secondary">Annuler</a>
+                        <div class="form-group mb-4">
+                            <label for="title" class="form-label">Titre de l'Article</label>
+                            {{ form.title }}
                         </div>
+                        <div class="form-group mb-4">
+                            <label for="content" class="form-label">image</label>
+                            {{ form.image }}
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="summary" class="form-label">Description</label>
+                            {{ form.description }}
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="content" class="form-label">Contenu</label>
+                            {{ form.content }}
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            <i class="fas fa-edit me-2"></i>Mettre à Jour l'Article
+                        </button>
                     </form>
                 </div>
             </div>
